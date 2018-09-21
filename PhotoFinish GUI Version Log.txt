@@ -1,0 +1,68 @@
+PhotoFinish version Log
+====================================
+Xingxing Xing		Aug 17 2010
+
+2.1.2	XXX	Apr 25 2010
+ - Changed the time axis size from 2000 to 3000, to accommodating a larger coincidence window. This
+also solves the bug of overflow which causes the displayed rate shown as '$d', '(d', etc.
+
+2.1.1	XXX	Feb 15 2010
+ - Changed data log files, the first data column, from basis name(HH) to basis number(1). For Matlab.
+
+2.1.0	XXX	Aug 31 2010
+ - GPIB optimization, program frozen while waiting for GPIB motion done. changed for Tomo.
+
+2.0.9	XXX	Aug 28 2010
+ - bug fix: time bin around 0, counts are twice as high as elsewhere. 
+ - bug fix: refresh of graph.
+
+2.0.8   XXX     Aug 25 2010
+ - changed from TCP to UDP, to speed up the communication.
+
+2.0.7   XXX     Aug 21 2010
+ - added HOM scan, tomography and waveplate calibration functionality. @@ to be tested.
+ - added calibration off.
+ - added realtime plot, @@using DeleteGraphPlot and RefreshPlot.
+
+2.0.6   XXX     Aug 20 2010
+ - improved user interface.
+
+
+2.0.5   XXX     Aug 19 2010
+ - bug: when processing P packet, the 3rd packet always gives problems. RdPtr = 1898, ArTmA or ArTmB overflow. P 135 R...
+when operate lower than 700Hz input, problem disappears. This turns out to be dependant on the Rabbit TCP_BUF_SIZE constant! So possibly this is the problem of Rabbit.
+ - added version display.
+ - added automatic reconnection functionality of tcp.
+ - added calibration and version function at start up.
+
+2.0.4   XXX     Aug 18 2010
+ - change the calculation of a coincidence arrival time to a lookup table.
+
+2.0.3   XXX	Aug 18 2010
+ - Major re-write of the Rd function.
+ - Speed up the read buffer function, process number of bytes as header indicated.
+ - fix in 2.0.2: Arrival time calculation and write to file checked. 
+ - ##bug:*sometimes pointer access to unknown area, causing fatal run-time error.
+	 *at high rate, GUI didn't response to control. put Rd function in another thread?
+ - ##boundary condition checking while writing or reading near the end of the buffer.
+ - ##simplify the basis setting function. prototype: MoveToWPSetting("RL").
+ - ##Need SPCM to check for timing.
+
+
+2.0.2	XXX	Aug 17 2010
+ - Separate thread implemented for reading TCP data and write to buffer.
+ - Read  and process buffer function is within the main thread.
+ - Singles report, Heart beat, coincidence at low rate tested.
+ - ##Arrival time calculation and write to file to be checked.
+ - Read buffer function process the buffer byte-by-byte. 
+ - Boundary condition checked for slow rate.
+
+2.0.1x	XXX	Aug 16 2010
+ - DO NOT USE, work in progress towards multi-threaded processing.
+
+
+1.3	XXX	(before) Aug 10 2010
+ - Last working version of PhotoFinish Working GUI, for modified singles' report.
+ - Write the TCP data to a large buffer, which can run up to a few thousands/sec.
+ - Raw data file is binary data of coincidence report. need to process later.
+ - Single threaded.
